@@ -1,0 +1,26 @@
+{% extends "Administrator/base.html" %}
+{%block content%}
+  {%if messages%}
+    {% for message in messages %}
+      <div class="alert alert-{{message.tags}}">
+        {{message}}
+      </div>
+    {% endfor %}
+  {% endif %}
+  <h1 style="text-align:center;"> La liste des salles </h1>
+  {%for salle in listSalle%}
+  <div class="card mb-1">
+    <div class="card-header">
+      Salle id: {{salle.salle_id}}
+    </div>
+    <div class="card-body">
+      <p>
+        Capacite: {{salle.capacite}}
+      </p>
+      <p>
+        Equipment: {{salle.equipment_names}}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+{%endblock content%}  

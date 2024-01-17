@@ -1,0 +1,119 @@
+{% include 'Base.html' %}
+{% include 'Navigation.html' %}
+
+{% block content %}
+    <div class="m-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="{{ form.salle.id_for_label }}">Salle</label>
+                    {{ form.salle }}
+                    {% if form.salle.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.salle.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.utilisateur.id_for_label }}">Utilisateur</label>
+                    {{ form.utilisateur }}
+                    {% if form.utilisateur.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.utilisateur.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="{{ form.date_debut.id_for_label }}">Date de début</label>
+                    {{ form.date_debut }}
+                    {% if form.date_debut.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.date_debut.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="{{ form.date_fin.id_for_label }}"> Date de fin</label>
+                    {{ form.date_fin }}
+                    {% if form.date_fin.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.date_fin.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="{{ form.objet.id_for_label }}">Objet</label>
+                    {{ form.objet }}
+                    {% if form.objet.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.objet.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="{{ form.description.id_for_label }}">Description</label>
+                    <textarea class="form-control" id="{{ form.description.id_for_label }}" rows="3" name="{{ form.description.name }}">{{ form.description.value }}</textarea>
+                    {% if form.description.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.description.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12 text-right">
+                    <div style="display: flex; justify-content: center;">
+                        <button class="btn btn-success" type="submit">Save</button>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% include 'Footer.html' %}
+
+<style>
+
+    body {
+        overflow-y: scroll;
+    }
+
+    .m-2 {
+        margin: 2rem;
+    }
+
+    .container {
+        max-width: 600px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        font-weight: bold;
+    }
+    
+</style>

@@ -1,0 +1,36 @@
+{% extends "User/base.html" %}
+
+
+{%block content%}
+  {%if messages%}
+    {% for message in messages %}
+      <div class="alert alert-{{message.tags}}">
+        {{message}}
+      </div>
+      
+    {% endfor %}
+  {% endif %}
+  <h1 style="text-align:center"> Listes de Reservations </h1>
+  
+  {%for Reservation in listReservations%}
+  <div class="card mb-1">
+    <div class="card-header">
+      Reservation id: {{Reservation.reservation_id}}
+    </div>
+    <div class="card-body">
+      <p>
+        salle_id: {{Reservation.salle_id}}
+      </p>
+      <p>
+        date: {{Reservation.date}}
+      </p>
+      <p>
+        heure: {{Reservation.heure}}
+      </p>
+      <p>
+        nombre d'invite : {{Reservation.nbr_invt}}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+{%endblock content%}  

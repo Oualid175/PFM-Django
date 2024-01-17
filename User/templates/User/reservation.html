@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Réservation de salle de réunion</title>
+</head>
+<body>
+  <h1>Réservation de salle de réunion</h1>
+  
+  {% if error_message %}
+    <p>{{ error_message }}</p>
+  {% endif %}
+  
+  <form method="POST" action="{% url 'reserver' %}">
+    {% csrf_token %}
+    
+    <label for="date">Date :</label>
+    <input type="date" id="date" name="date" required>
+    
+    <label for="heure">Heure :</label>
+    <input type="time" id="heure" name="heure" required>
+    
+    <label for="salle">Salle :</label>
+    <select id="salle" name="salle_id" required>
+      {% for salle in salles_disponibles %}
+        <option value="{{ salle.salle_id }}">{{ salle.nom }}</option>
+      {% endfor %}
+    </select>
+    
+    <label for="equipment">Équipements :</label>
+    <select multiple id="equipment" name="equipment">
+      {% for equipment in equipment_list %}
+        <option value="{{ equipment.id }}">{{ equipment.name }}</option>
+      {% endfor %}
+    </select>
+    
+    <label for="nbr_invt">Nombre d'invités :</label>
+    <input type="number" id="nbr_invt" name="nbr_invt" min="1" required>
+    
+    <button type="submit">Réserver</button>
+  </form>
+</body>
+</html>
